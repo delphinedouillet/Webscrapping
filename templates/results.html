@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hot Finds</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>Mars Facts</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Find great facts about Mars</a></p>
+    </div>
+
+    <!-- Craigslist Listings -->
+    <div class="row" id="mars">
+      <div class="col-md-12">
+
+          <div class="container-fluid">
+              <h2>{{mars[0].news_title}}</h2>
+              <p>{{mars[0].news_p}}</p>
+
+              <div class="container-fluid">
+                  <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                          <h3>Featured Mars Image</h3>
+                          <img src="https://photojournal.jpl.nasa.gov/jpeg/PIA19674.jpg" style="width:70%;">
+              </div>
+                      </div>
+                  </div>
+          </div>
+                      <div class="col-xs-12 col-sm-12">
+                       <ul>
+                  <h3>Current Mars Weather</h3>
+                  {{mars[0].mars_weather}}
+  
+
+                      <h3>Mars Facts</h3>
+                              {{mars[0].mars_fact_html|safe}}
+                              <a href="{{mars[0].mars_fact_html}}"></a>
+
+
+                      <h3>Mars hemispheres</h3>
+
+                            {% for image in mars[0].hemisphere_image_urls %}
+                          <li>
+                              {{image.title}}
+                              <br>
+                              url:
+                              {{image.img_url}}
+
+                          </li>
+                              {% endfor %}
+                        </ul>
+                      </div>
+
+
+      </div>
+     </div>
+</body>
+
+</html>
+
